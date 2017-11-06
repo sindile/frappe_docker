@@ -31,16 +31,13 @@ RUN apt-get update && apt-get install -y \
     xfonts-75dpi \
     xfonts-base libjpeg8-dev \
     zlib1g-dev \
-&& rm -rf /var/lib/apt/lists/*
-
-RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
-RUN pip install --upgrade setuptools pip
-RUN useradd -ms /bin/bash frappe
-RUN apt-get install -y \
     curl \
     rlwrap \
     redis-tools \
     nano \
+    wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
+    pip install --upgrade setuptools pip
+    useradd -ms /bin/bash frappe
 && rm -rf /var/lib/apt/lists/*
 
 
