@@ -5,19 +5,43 @@ FROM ubuntu:16.04
 MAINTAINER Vishal Seshagiri
 
 USER root
-RUN apt-get update
-RUN apt-get install -y iputils-ping
-RUN apt-get install -y git build-essential python-setuptools python-dev libffi-dev libssl-dev
-RUN apt-get install -y redis-tools software-properties-common libxrender1 libxext6 xfonts-75dpi xfonts-base
-RUN apt-get install -y libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev python-tk apt-transport-https libsasl2-dev libldap2-dev libtiff5-dev tcl8.6-dev tk8.6-dev
-RUN apt-get install -y wget
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    build-essential \
+    git \
+    iputils-ping \
+    libffi-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libldap2-dev \
+    libsasl2-dev \
+    libssl-dev \
+    libtiff5-dev \
+    libxext6 \
+    libxrender1 \
+    libwebp-dev \
+    python-dev \
+    python-setuptools \
+    python-tk \
+    redis-tools \
+    software-properties-common \
+    tcl8.6-dev \
+    tk8.6-dev \
+    wget \
+    xfonts-75dpi \
+    xfonts-base libjpeg8-dev \
+    zlib1g-dev \
+&& rm -rf /var/lib/apt/lists/*
+
 RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
 RUN pip install --upgrade setuptools pip
 RUN useradd -ms /bin/bash frappe
-RUN apt-get install -y curl
-RUN apt-get install -y rlwrap
-RUN apt-get install redis-tools
-RUN apt-get install -y nano
+RUN apt-get install -y \
+    curl \
+    rlwrap \
+    redis-tools \
+    nano \
+&& rm -rf /var/lib/apt/lists/*
 
 
 #nodejs
